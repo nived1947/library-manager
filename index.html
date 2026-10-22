@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#14213d">
+  <title>BookHub | Library Desk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard" aria-label="BookHub dashboard">
+        <span class="brand-mark">B</span>
+        <span><strong>BookHub</strong><small>LIBRARY DESK</small></span>
+      </a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">▦</span> Dashboard</button>
+        <button class="nav-item" data-page="books"><span class="nav-icon">▤</span> Book catalogue</button>
+        <button class="nav-item" data-action="add"><span class="nav-icon">＋</span> Add a book</button>
+        <button class="nav-item" data-action="issue"><span class="nav-icon">↗</span> Issue a book</button>
+        <button class="nav-item" data-action="return"><span class="nav-icon">↙</span> Return a book</button>
+      </nav>
+      <div class="nav-label secondary-label">COLLECTION TOOLS</div>
+      <nav class="nav-list">
+        <button class="nav-item" data-page="waiting"><span class="nav-icon">☷</span> Waiting list <span class="nav-count" id="waitingNavCount">0</span></button>
+        <button class="nav-item" data-page="loans"><span class="nav-icon">◷</span> Active loans</button>
+        <button class="nav-item" data-page="history"><span class="nav-icon">↶</span> Return history</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="online-dot"></div>
+        <div><strong>Library workspace</strong><small>Local demo mode</small></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong id="pageHeading">Dashboard</strong></div>
+        <div class="topbar-right">
+          <span class="today-label" id="todayLabel"></span>
+          <div class="avatar" title="Librarian">L</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-row">
+            <div><div class="eyebrow">LIBRARY OVERVIEW</div><h1>Good day, Librarian <span class="wave">✦</span></h1><p class="subheading">Here's what's happening with your collection today.</p></div>
+            <button class="btn btn-primary" data-action="add"><span>＋</span> Add new book</button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">BOOK TITLES</span><span class="stat-icon indigo">▤</span></div><div class="stat-value" id="statTitles">0</div><div class="stat-foot">Unique titles in catalogue</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">AVAILABLE COPIES</span><span class="stat-icon green">✓</span></div><div class="stat-value" id="statAvailable">0</div><div class="stat-foot">Ready to borrow</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">ACTIVE LOANS</span><span class="stat-icon violet">↗</span></div><div class="stat-value" id="statLoans">0</div><div class="stat-foot">Currently with readers</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">WAITING READERS</span><span class="stat-icon amber">☷</span></div><div class="stat-value" id="statWaiting">0</div><div class="stat-foot">Waiting for a copy</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel recent-panel">
+              <div class="panel-heading"><div><h2>Book catalogue</h2><p>Quickly find a title and check availability.</p></div><button class="text-button" data-page="books">View catalogue <span>→</span></button></div>
+              <div class="table-search"><span>⌕</span><input id="dashboardSearch" type="search" placeholder="Search title, author, ISBN or category..." aria-label="Search books from dashboard"></div>
+              <div class="table-wrap"><table><thead><tr><th>BOOK</th><th>CATEGORY</th><th>AVAILABLE</th><th>STATUS</th></tr></thead><tbody id="dashboardBookRows"></tbody></table></div>
+              <div class="panel-foot"><span id="catalogueSummary">0 titles</span><button class="text-button" data-page="books">Open full catalogue →</button></div>
+            </section>
+            <section class="panel quick-panel">
+              <div class="panel-heading"><div><h2>Quick actions</h2><p>Common tasks, one click away.</p></div></div>
+              <button class="quick-action" data-action="issue"><span class="quick-icon blue">↗</span><span><strong>Issue a book</strong><small>Register a reader's loan</small></span><span class="quick-arrow">→</span></button>
+              <button class="quick-action" data-action="return"><span class="quick-icon mint">↙</span><span><strong>Return a book</strong><small>Complete a book return</small></span><span class="quick-arrow">→</span></button>
+              <button class="quick-action" data-page="waiting"><span class="quick-icon gold">☷</span><span><strong>Manage waiting list</strong><small>See readers waiting for books</small></span><span class="quick-arrow">→</span></button>
+              <div class="tip-box"><span>✦</span><div><strong>Helpful tip</strong><p>Search the catalogue before adding a title to avoid duplicate records.</p></div></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="page" id="page-books">
+          <div class="page-title-row"><div><div class="eyebrow">YOUR COLLECTION</div><h1>Book catalogue</h1><p class="subheading">Manage titles, copy counts and availability in one place.</p></div><button class="btn btn-primary" data-action="add">＋ Add new book</button></div>
+          <section class="panel">
+            <div class="catalogue-tools"><label class="table-search wide-search"><span>⌕</span><input id="catalogueSearch" type="search" placeholder="Search by title, author, ISBN or category..."></label><span class="result-count" id="catalogueCount">0 titles</span></div>
+            <div class="table-wrap"><table><thead><tr><th>ISBN / BOOK ID</th><th>BOOK TITLE</th><th>AUTHOR</th><th>CATEGORY</th><th>AVAILABLE</th><th>TOTAL COPIES</th><th>STATUS</th></tr></thead><tbody id="catalogueRows"></tbody></table></div>
+          </section>
+        </section>
+
+        <section class="page" id="page-loans">
+          <div class="page-title-row"><div><div class="eyebrow">BORROWING ACTIVITY</div><h1>Active loans</h1><p class="subheading">Review which books are currently borrowed and by whom.</p></div><button class="btn btn-primary" data-action="issue">↗ Issue a book</button></div>
+          <section class="panel"><div class="panel-heading"><div><h2>Currently issued</h2><p>Return a book directly from the table.</p></div></div><div class="table-wrap"><table><thead><tr><th>READER</th><th>STUDENT ID</th><th>BOOK</th><th>ISBN</th><th>ISSUED ON</th><th>ACTION</th></tr></thead><tbody id="loanRows"></tbody></table></div></section>
+        </section>
+
+        <section class="page" id="page-waiting">
+          <div class="page-title-row"><div><div class="eyebrow">QUEUE MANAGEMENT</div><h1>Waiting list</h1><p class="subheading">Readers are listed in first-in, first-out order for each title.</p></div></div>
+          <div id="waitingGroups" class="waiting-groups"></div>
+        </section>
+
+        <section class="page" id="page-history">
+          <div class="page-title-row"><div><div class="eyebrow">CIRCULATION RECORD</div><h1>Return history</h1><p class="subheading">Recent returns recorded during this browser session and saved locally.</p></div></div>
+          <section class="panel"><div class="table-wrap"><table><thead><tr><th>BOOK</th><th>READER</th><th>STUDENT ID</th><th>RETURNED ON</th></tr></thead><tbody id="historyRows"></tbody></table></div></section>
+        </section>
+      </div>
+      <footer class="app-footer"><span>BookHub Library Desk</span><span>Simple · Organised · Reliable</span></footer>
+    </main>
+  </div>
+
+  <dialog id="bookDialog" class="modal">
+    <form id="bookForm" method="dialog">
+      <div class="modal-header"><div><div class="eyebrow">COLLECTION MANAGEMENT</div><h2 id="bookDialogTitle">Add a new book</h2><p>Enter the book details below.</p></div><button type="button" class="close-btn" data-close="bookDialog" aria-label="Close">×</button></div>
+      <div class="form-grid">
+        <label>ISBN / Book ID<input name="isbn" required maxlength="40" placeholder="e.g. 978-1-23456-789-0"></label>
+        <label>Book title<input name="title" required maxlength="120" placeholder="Enter book title"></label>
+        <label>Author<input name="author" required maxlength="100" placeholder="Author name"></label>
+        <label>Category / topic<input name="category" required maxlength="70" placeholder="e.g. Programming"></label>
+        <label class="full-field">Number of copies<input name="copies" required type="number" min="1" max="10000" value="1"></label>
+      </div>
+      <div class="modal-actions"><button type="button" class="btn btn-light" data-close="bookDialog">Cancel</button><button type="submit" class="btn btn-primary">Save book</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="issueDialog" class="modal">
+    <form id="issueForm" method="dialog">
+      <div class="modal-header"><div><div class="eyebrow">CIRCULATION</div><h2>Issue a book</h2><p>Record the reader and select a title.</p></div><button type="button" class="close-btn" data-close="issueDialog" aria-label="Close">×</button></div>
+      <div class="form-grid">
+        <label>Student ID<input name="studentId" required maxlength="40" placeholder="e.g. AJCE2026"></label>
+        <label>Student name<input name="studentName" required maxlength="100" placeholder="Reader's full name"></label>
+        <label class="full-field">Select book<select name="isbn" id="issueBookSelect" required></select></label>
+      </div>
+      <p class="form-note">If no copies are available, you can add the reader to the waiting list.</p>
+      <div class="modal-actions"><button type="button" class="btn btn-light" data-close="issueDialog">Cancel</button><button type="submit" class="btn btn-primary">Confirm issue</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="returnDialog" class="modal">
+    <form id="returnForm" method="dialog">
+      <div class="modal-header"><div><div class="eyebrow">CIRCULATION</div><h2>Return a book</h2><p>Select the active loan being returned.</p></div><button type="button" class="close-btn" data-close="returnDialog" aria-label="Close">×</button></div>
+      <label class="stacked-label">Active loan<select name="studentId" id="returnLoanSelect" required></select></label>
+      <p class="form-note">If someone is waiting for this title, the copy will be assigned to the next reader automatically.</p>
+      <div class="modal-actions"><button type="button" class="btn btn-light" data-close="returnDialog">Cancel</button><button type="submit" class="btn btn-primary">Confirm return</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
