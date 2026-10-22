@@ -1,35 +1,81 @@
-# BookHub Library Desk — HTML, CSS and JavaScript
+# BookHub – Library Management System
 
-A responsive, librarian-friendly library management website.
+## Overview
 
-## Files
-- `index.html` — page structure and forms
-- `style.css` — responsive visual design
-- `script.js` — book catalogue, issuing, returns, waiting queue and local saving
+BookHub is a modern, responsive web-based library management system designed to simplify everyday library operations. Built using HTML, CSS, and JavaScript, it provides an intuitive interface for managing book inventories, tracking borrowed books, processing returns, and organizing reader waiting lists.
 
 ## Features
-- Dashboard with book, availability, active-loan and waiting-list counts
-- Searchable book catalogue
-- Add a new title or add copies to an existing ISBN
-- Issue a book to a student
-- Return an active loan
-- FIFO waiting list when all copies of a title are issued
-- Automatically assigns a returned copy to the next waiting reader
-- Active loans and return history
-- Responsive sidebar for desktop and mobile
-- Saves changes in browser `localStorage`
 
-## Run it
-1. Extract the ZIP file.
-2. Open `index.html` in a modern browser, or open the folder in VS Code and use Live Server.
-3. No Java, JDK, backend, API or internet connection is required for the core features.
+- **Dashboard:** Displays key library statistics, including total books, available copies, active loans, and waiting readers.
+- **Book Management:** Add new books, update inventory by adding copies, and maintain book details.
+- **Book Search:** Search the catalogue to find books quickly.
+- **Book Issuing:** Record book loans to students and manage borrowing availability.
+- **Book Returns:** Process returned books and update availability automatically.
+- **Waiting List Management:** Maintain a first-in, first-out (FIFO) waiting list for unavailable books.
+- **Automatic Book Allocation:** Assign returned copies to the next eligible reader in the waiting list.
+- **Loan Tracking:** View active loans and borrowing history.
+- **Responsive Interface:** Provides a clean, professional layout for different screen sizes.
+- **Local Data Storage:** Uses browser local storage to preserve changes between visits.
 
-## Publish using GitHub Pages
-1. Upload `index.html`, `style.css` and `script.js` to the **root** of your existing GitHub repository.
-2. Keep your Java `.java` files; you do not need to delete them.
-3. Open the repository's **Settings → Pages**.
-4. Select **Deploy from a branch**, choose your current branch (for example `master`) and folder `/(root)`, then save if needed.
-5. Wait for deployment, then open the GitHub Pages URL shown in Settings → Pages.
+## Technologies Used
 
-## Data and privacy note
-This is a frontend demo. Records are stored in the browser's local storage on the device/browser used. They are not shared between computers or browsers and are not a secure, central database. Clearing browser data may remove them. For a real library deployment, connect a backend and database and add user authentication, backups and permissions.
+- HTML5 – Website structure
+- CSS3 – Styling and responsive layout
+- JavaScript – Application logic and interactive functionality
+- Browser Local Storage – Client-side data persistence
+
+## Getting Started
+
+### Prerequisites
+
+A modern web browser such as Google Chrome, Microsoft Edge, or Firefox.
+
+### Installation
+
+1. Clone or download this repository.
+2. Open the project folder.
+3. Locate `index.html`.
+4. Open `index.html` in your web browser.
+
+No additional software installation or backend server is required for the current frontend implementation.
+
+## Project Structure
+
+```text
+BookHub/
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+```
+
+## Data Storage
+
+BookHub uses browser local storage to save library information. The data remains available in the same browser unless its stored data is cleared. Data is not automatically shared across different browsers or computers.
+
+## Deployment
+
+The website can be hosted using GitHub Pages.
+
+1. Upload the project files to the repository.
+2. Navigate to **Settings → Pages**.
+3. Select **Deploy from a branch**.
+4. Choose the branch containing the website files.
+5. Select the root folder (`/root`) and save the settings.
+
+## Future Enhancements
+
+- Database integration for centralized storage
+- User authentication and role-based access
+- Student and librarian accounts
+- Fine calculation and overdue notifications
+- Advanced reporting and analytics
+- Cloud synchronization across devices
+
+## License
+
+This project is intended for educational and demonstration purposes. Add a suitable open-source license if you plan to distribute it publicly.
+
+## Author
+
+Developed as a library management project to demonstrate web development concepts and practical inventory management functionality.
